@@ -8,8 +8,7 @@ import serviceAccount from "../service-account.json";
  */
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
-    databaseURL: process.env.VUE_DATABASE_URL,
-    storageBucket: process.env.VUE_STORAGE_BUCKET,
+    databaseURL: "https://chromie-bb322-default-rtdb.firebaseio.com",
 });
 
 const db = admin.firestore();
