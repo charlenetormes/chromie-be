@@ -3,7 +3,7 @@ import { User } from "../types/user.interface";
 import OpenAI from "openai";
 
 const openai = new OpenAI({
-    apiKey: "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",
+    apiKey: "",
 });
 
 export const create = async (user: User) => {
