@@ -1,6 +1,7 @@
 import * as functions from "firebase-functions";
 import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
+import userRoutes from "./routes/users.routes";
 
 const expressApp = express();
 const port = process.env.PORT || 3000;
@@ -29,7 +30,7 @@ expressApp.use((req: Request, res: Response, next: NextFunction) => {
 /**
  * Declaring all of our api routes
  */
-// expressApp.use(userRoutes);
+expressApp.use(userRoutes);
 // expressApp.use(templateRoutes);
 // expressApp.use(nudgeRoutes);
 // expressApp.use(completedRoutes);

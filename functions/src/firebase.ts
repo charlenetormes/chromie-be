@@ -11,7 +11,7 @@ admin.initializeApp({
     databaseURL: "https://chromie-bb322-default-rtdb.firebaseio.com",
 });
 
-const db = admin.firestore();
+const db = admin.database();
 const auth = admin.auth();
 
 export { admin, db, auth };
