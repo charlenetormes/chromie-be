@@ -1,9 +1,10 @@
 import { db } from "../firebase";
 import { User } from "../types/user.interface";
 import OpenAI from "openai";
+import "dotenv/config";
 
 const openai = new OpenAI({
-    apiKey: "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",
+    apiKey: process.env.OPENAI_KEY,
 });
 
 export const create = async (user: User) => {
