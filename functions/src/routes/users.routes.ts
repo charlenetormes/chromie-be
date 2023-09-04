@@ -1,5 +1,9 @@
 import * as express from "express";
-import { createUser, suggestMessage } from "../controllers/users.controllers";
+import {
+    createUser,
+    sentimentAnalysis,
+    suggestMessage,
+} from "../controllers/users.controllers";
 
 const userRouter = express.Router();
 
@@ -10,5 +14,6 @@ const userRouter = express.Router();
  */
 userRouter.post("/users", createUser);
 userRouter.post("/users/suggest", suggestMessage);
+userRouter.post("/users/sentiment", sentimentAnalysis);
 
 export default userRouter;

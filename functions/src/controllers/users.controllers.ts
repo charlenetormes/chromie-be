@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { create, suggest } from "../store/users.store";
+import { create, sentiment, suggest } from "../store/users.store";
 
 export const createUser = async (req: Request, res: Response) => {
     try {
@@ -28,6 +28,25 @@ export const suggestMessage = async (req: Request, res: Response) => {
         const message = req.body.message ?? null;
         const mood = req?.body?.mood ?? ["formal"];
         const data = await suggest(message, mood);
+
+        return res.status(200).send({
+            code: 200,
+            message: "Success",
+            data: data,
+        });
+    } catch (e) {
+        return res.status(400).send({
+            code: 400,
+            message: e,
+        });
+    }
+};
+
+export const sentimentAnalysis = async (req: Request, res: Response) => {
+    try {
+        const message = req.body.message ?? null;
+        const mood = req?.body?.mood ?? ["formal"];
+        const data = await sentiment(message, mood);
 
         return res.status(200).send({
             code: 200,
