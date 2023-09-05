@@ -3,6 +3,7 @@ import {
     createUser,
     sentimentAnalysis,
     suggestMessage,
+    summarizeMessage,
 } from "../controllers/users.controllers";
 
 const userRouter = express.Router();
@@ -15,5 +16,6 @@ const userRouter = express.Router();
 userRouter.post("/users", createUser);
 userRouter.post("/users/suggest", suggestMessage);
 userRouter.post("/users/sentiment", sentimentAnalysis);
+userRouter.post("/users/summarize", summarizeMessage);
 
 export default userRouter;

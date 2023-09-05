@@ -66,7 +66,41 @@ export const sentiment = async (message: string, mood: string[]) => {
                 content: `
                     ${message}
         
-                    What is the tone of the message above? Only categorize them as happy, neutral, and sad/angry. Only answer 1 if happy, 2 if neutral, and 3 if sad/angry.
+                    What is the tone of the message above? Categorize them as positive tone, neutral tone, and negative tone. 1 if positive, 2 if neutral, and 3 if negative.
+
+                    Reply with a format: 
+                    Emotion: [insert 1, 2, or 3 here]
+
+                    [Insert the tone of the message above with some description about why that tone is categorized as that here]
+                `,
+            },
+        ],
+        temperature: 0,
+    });
+
+    const result = completion?.choices?.[0]?.message?.content?.split("\n\n");
+    const data = {
+        tone: result[0],
+        message: result[1],
+    };
+
+    return data;
+};
+
+export const summarize = async (message: string) => {
+    const completion = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages: [
+            {
+                role: "system",
+                content: "You are a helpful assistant.",
+            },
+            {
+                role: "user",
+                content: `
+                    ${message}
+        
+                    Summarize the message above in bullet form
                 `,
             },
         ],
